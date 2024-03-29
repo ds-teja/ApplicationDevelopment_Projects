@@ -1,0 +1,46 @@
+
+.atag {
+    display: inline-block;
+    padding: 0.6em 1.2em;
+    text-decoration: none;
+    background-color: #709aef;
+    color: #f3eeee;
+    border-radius: 0.25em;
+    margin: 0.5em;
+}
+
+a {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background-color: #709aef;
+    color: #f3eeee;
+    border-radius: 0.25em;
+    margin: 0.5em;
+}
+
+.textbar{
+    width:40em;
+    height: 2em;
+    border-radius: 10px;
+    margin: 10px;
+    margin-left:33%;
+    padding:5px
+}
+
+.buttons{
+    width:15em;
+    height: 3em;
+    border-radius: 10px;
+    margin-left: 45%;
+    margin-top:1%;
+    padding:5px;
+    background-color:rgb(240, 236, 236);
+    
+}
+
+.navicon:hover{
+    background-color: rgb(42, 41, 41);
+    border-radius: 10px;
+}
+

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body style="background-color: rgb(127, 214, 243);"> 
+    {% if logout == "True" %}
+        <script>
+            localStorage.removeItem('user_id');
+        </script>
+    {% endif %}
+    <h1 style="color:white;text-align:center;">SITENJOY</h1>    
+    <form method="post"  action="{{ url_for('index') }}">
+        <input class="textbar" type="text" name="username" placeholder="Enter your user name">
+        <input class="textbar" type="password" name="password" placeholder="Enter your password">
+        <select name="dropdown">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
+        <div style="margin-left:44%">
+            <input class="atag" type="submit" value="Log In">
+            <a href="{{url_for('signup')}}">Sing Up</a>
+        </div>
+    </form>
+    
+</body>
+</html>

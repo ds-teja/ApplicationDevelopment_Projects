@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body  style="background-color: rgb(127, 214, 243);">
+    {% block content %}
+        <script>
+            const token = '{{ token }}';
+            const user_id = '{{ user_id }}'
+            localStorage.setItem('user_id',user_id)
+        </script>
+    {% endblock %}
+    <div style="display:flex;color:white;background-color: aquamarine;border-radius: 10px;">
+        <h1 style="color:white;flex-basis:60%;margin:2%">Welcome {{ username }}</h1>
+        <h1><a href="{{url_for('MyProfile')}}">Profile</a></h1>
+        <h1><a href="{{url_for('MyBookings')}}">Bookings</a></h1>
+        <h1><a href="{{url_for('index')}}">Logout</a></h1>
+    </div>
+    {% for i in venuelist.values() %}
+        <div style="background-color: aquamarine;border-radius: 10px;">
+            <h1 style="color:white;margin:2%">{{ i["venue"][1] }}</h1>
+            <div style="display:flex;color:white;border-radius: 10px;">
+                {% for show in i["shows"] %}
+                    <div  style="background-color:rgb(72, 70, 70);color:white;flex-basis:20%;margin:2%;border-radius: 10px;padding: 15px">
+                        <h1 style="background-color:rgb(72, 70, 70);color:white;flex-basis:20%;;border-radius: 10px;padding: 15px">{{ show[1] }}</h1>
+                        <a href="{{ url_for('ViewShow',show_id=show[0]) }}">Book Now!</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body  style="background-color: rgb(127, 214, 243);">
+    <div style="display:flex;color:white;background-color: aquamarine;border-radius: 10px;">
+        <h1 style="color:white;flex-basis:60%;margin:2%"></h1>
+        <h1><a href="{{url_for('homepage')}}">Home</a></h1>
+        <h1><a href="{{url_for('MyBookings')}}">Bookings</a></h1>
+        <h1><a href="{{url_for('index')}}">Logout</a></h1>
+    </div>
+    <div style="display:flex;margin-left:5%">
+        <h1 style="color:white;flex-basis: 70%;">Booking - Show:{{showdata[1]}} , Venue:{{venuedata[1]}} </h1>
+        <h1 style="color: white;flex-basis: 25%;">Time: {{showdata[6]}} - {{showdata[7]}}</h1>
+    </div>
+    <form style="color:white;margin-left: 40%;" method="POST">
+        <h1>Available Seats: {{showdata[8]}}</h1>
+        <div style="display:flex">
+            <h1>Number of seats:</h1><input type="text" name="tickets">
+        </div>
+        <h1>Price:{{showdata[4]}}</h1>
+        <input type="submit">
+        <input type="hidden" name="show_id" value="{{ showdata[0] }}">
+        {% if totalPrice != "" %}
+            <h1>Total: {{totalPrice}}</h1>
+            <input type="hidden" name="show_id" value="{{ showdata[0] }}">
+            <input type="submit" name="confirm" value="Click To Confirm Tickets!" formaction="{{ url_for('confirm') }}">
+            <h1>No of tickets booking - {{tickets}}</h1>
+            <input type="hidden" name="confirmtickets" value="{{ tickets }}">
+            <input type="submit" value="Cancel" formaction="{{ url_for('confirm') }}">
+        {% endif %}
+        
+    </form>
+</body>
+</html>

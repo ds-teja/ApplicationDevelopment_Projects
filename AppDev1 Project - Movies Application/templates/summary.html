@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body  style="background-color: rgb(127, 214, 243);">
+    <div style="display:flex;color:white;background-color: aquamarine;border-radius: 10px;">
+        <h1 style="color:white;flex-basis:60%;margin:2%">Welcome</h1>
+        <h1><a href="{{url_for('ViewVenue')}}">Home</a></h1>
+        <h1><a href="{{url_for('index')}}">Logout</a></h1>
+    </div>
+    {% if admin_venues != [] %}
+        {% for i in venue_shows.values() %}
+            <div style="background-color: aquamarine;border-radius: 10px;padding:10px;margin:1%;">
+                <h1 style="color:white;margin:2%">{{ i["venue"][1] }}</h1>
+                <h1>Tickets sold - {{venues_visited[i["venue"][0]]}} </h1>
+                <div style="display:flex">
+                    {% for show in i["shows"] %}
+                        <div  style="background-color:rgb(72, 70, 70);color:white;flex-basis:20%;margin:2%;border-radius: 10px;padding: 15px">
+                            <h1 style="background-color:rgb(72, 70, 70);color:white;flex-basis:20%;;border-radius: 10px;padding: 15px">{{ show[1] }}</h1>
+                           
+                            <h1>Tickets sold - {{shows_visited[show[0]]}} </h1>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>     
+        {%endfor%}
+    {% endif %}
+    
+</body>
+</html>

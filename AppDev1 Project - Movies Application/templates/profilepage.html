@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body  style="background-color: rgb(127, 214, 243);color:white">
+    <div style="display:flex;color:white;background-color: aquamarine;border-radius: 10px;">
+        <h1 style="color:white;flex-basis:60%;margin:2%"></h1>
+        <h1><a href="{{url_for('homepage')}}">Home</a></h1>
+        <h1><a href="{{url_for('MyBookings')}}">Bookings</a></h1>
+        <h1><a href="{{url_for('index')}}">Logout</a></h1>
+    </div>
+    <h1>Number of shows visited - {{no_of_shows}}</h1>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body style="background-color: rgb(127, 214, 243);"> 
+    <div style="display:flex;color:white;background-color: aquamarine;border-radius: 10px;">
+        <h1 style="color:white;flex-basis:60%;margin:2%">SITENJOY</h1>
+        <h1><a href="{{url_for('MyProfile')}}">Summary</a></h1>
+        <h1><a href="{{url_for('index')}}">Logout</a></h1>
+    </div>
+    <form method="POST" action="{{url_for('EditShow',show_id=show[0])}}">
+        <h1>Name of the show - </h1><input type="text" name="name" value="{{show[1]}}">
+        <h1>Rating - </h1><input type="text" name="rating" value="{{show[3]}}">
+        <h1>Start Time - </h1><input type="text" name="stime" value="{{show[6]}}">
+        <h1>End Time - </h1><input type="text" name="etime" value="{{show[7]}}">
+        <h1>Tags - </h1><input type="text" name="tags" value="None">
+        <h1>Price - </h1><input type="text" name="price" value="{{show[4]}}">
+        <input class="atag" type="submit" value="Edit Show">
+        <a href="{{url_for('DeleteShow',show_id=show[0])}}">Delete Show</a>
+    </form>
+</body>
+</html>

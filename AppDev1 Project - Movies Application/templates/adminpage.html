@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body  style="background-color: rgb(127, 214, 243);">
+    <div style="display:flex;color:white;background-color: aquamarine;border-radius: 10px;">
+        <h1 style="color:white;flex-basis:60%;margin:2%">Welcome</h1>
+        <h1><a href="{{url_for('Summary')}}">Summary</a></h1>
+        <h1><a href="{{url_for('index')}}">Logout</a></h1>
+    </div>
+    {% block content %}
+        <script>
+            const token = '{{ token }}';
+            const user_id = '{{ user_id }}'
+            localStorage.setItem('user_id',user_id)
+        </script>
+    {% endblock %} 
+    <a href="{{url_for('AddVenue')}}">Add a Venue</a>
+    {% if admin_venues != [] %}
+        {% for i in venue_shows.values() %}
+            <div style="background-color: aquamarine;border-radius: 10px;padding:10px;margin:1%;">
+                <h1 style="color:white;margin:2%">{{ i["venue"][1] }}</h1>
+                <div style="display:flex">
+                    {% for show in i["shows"] %}
+                        <div  style="background-color:rgb(72, 70, 70);color:white;flex-basis:20%;margin:2%;border-radius: 10px;padding: 15px">
+                            <h1 style="background-color:rgb(72, 70, 70);color:white;flex-basis:20%;;border-radius: 10px;padding: 15px">{{ show[1] }}</h1>
+                           
+                            <a href="{{ url_for('EditShow',show_id=show[0]) }}">Actions!</a>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <a href="{{ url_for('AddShow',venue_id=i["venue"][0]) }}">Add a show</a>
+                <a href="{{ url_for('EditVenue',venue_id=i["venue"][0]) }}">Edit Venue</a>
+                <a href="{{ url_for('DeleteVenue',venue_id=i["venue"][0]) }}">Delete Venue</a>
+            </div>     
+        {%endfor%}
+    {% endif %}
+    
+</body>
+</html>
